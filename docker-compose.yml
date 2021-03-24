@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  blockchain:
+    image: ravino
+    build:
+      context: .
+      dockerfile: ./.build/dev/Dockerfile
+    container_name: python
+
+    working_dir: /app/
+    volumes:
+      - ./:/app
+
+    networks:
+      - internal
+
+    #command: python3 ravino/coin/ravino.py --mine ProofOfWork --coin Ravino
+
+networks:
+  internal:
+    driver: bridge
